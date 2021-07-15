@@ -7,10 +7,17 @@ import org.junit.jupiter.api.Test;
 class MathUtilsTest {
 
 	@Test
-	void test() {
+	void testAdd() {
 		MathUtils mu = new MathUtils();
 		int actual = mu.add(10, 20);
 		assertEquals(30, actual);
+	}
+	
+	@Test
+	void testComputeCircleArea() {
+		MathUtils mu = new MathUtils();
+		double actual = mu.computeCircleArea(10);
+		assertEquals(314, actual);
 	}
 
 }
