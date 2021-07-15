@@ -8,7 +8,9 @@ class MathUtilsTest {
 
 	@Test
 	void test() {
-		assertEquals("saurabh", "saurabh");;
+		MathUtils mu = new MathUtils();
+		int actual = mu.add(10, 20);
+		assertEquals(30, actual);
 	}
 
 }
