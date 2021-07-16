@@ -1,5 +1,6 @@
 package com.saurabh;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -19,7 +20,6 @@ class MathUtilsTest {
 		mu = new MathUtils();
 	}
 	
-	
 	@BeforeAll 
 	static void testBeforeAllMethod() {
 		System.out.println("Before all");
@@ -28,8 +28,12 @@ class MathUtilsTest {
 	@Test
 	@DisplayName("Add")
 	void testAdd() {
-		int actual = mu.add(10, 20);
-		assertEquals(30, actual);
+		
+		assertAll(
+				() -> assertEquals(4, mu.add(2, 2)),
+				() -> assertEquals(12, mu.add(12, 0)),
+				() -> assertEquals(23, mu.add(12, 11))
+				);
 	}
 	
 	@Test
