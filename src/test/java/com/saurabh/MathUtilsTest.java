@@ -19,5 +19,15 @@ class MathUtilsTest {
 		double actual = mu.computeCircleArea(10);
 		assertEquals(314, actual);
 	}
+	
+	@Test
+	void testDivide() {
+		MathUtils mu = new MathUtils();
+		
+		assertThrows(ArithmeticException.class , () -> {
+			mu.divide(10,0);	
+		}, "asset throws !!");
+		
+	}
 
 }
