@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -26,7 +28,7 @@ class MathUtilsTest {
 	}
 
 	@Test
-	@DisplayName("Add")
+	@DisplayName("all 3 should work")
 	void testAdd() {
 		
 		assertAll(
@@ -36,18 +38,24 @@ class MathUtilsTest {
 				);
 	}
 	
-	@Test
-	void testComputeCircleArea() {
-		double actual = mu.computeCircleArea(10);
-		assertEquals(314, actual);
-	}
-	
-	@Test
-	void testDivide() {
-		assertThrows(ArithmeticException.class , () -> {
-			mu.divide(10,0);	
-		}, "asset throws !!");
+
+	@Nested
+	@DisplayName("Add Method")
+	class AddTest {
 		
+		@Test
+		void testComputeCircleArea() {
+			double actual = mu.computeCircleArea(10);
+			assertEquals(31, actual, "should return the area of circle radius with 10" );
+		}
+		
+		@Test
+		void testDivide() {
+			assertThrows(ArithmeticException.class , () -> {
+				mu.divide(10,0);	
+			}, "asset throws !!");
+			
+		}
 	}
 
 }
