@@ -4,18 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.function.Supplier;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-
-import java.util.Random;
-import java.util.function.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class MathUtilsTest {
@@ -33,7 +32,8 @@ class MathUtilsTest {
 	}
 
 	@Test
-	@DisplayName("all 3 should work")
+	@DisplayName("Assert All demo")
+	@Tag("Math")
 	void testAdd() {
 		
 		assertAll(
@@ -42,6 +42,8 @@ class MathUtilsTest {
 				() -> assertEquals(23, mu.add(12, 11))
 				);
 	}
+	
+	
 	
 	@Nested
 	@DisplayName("Add Method")
@@ -57,8 +59,9 @@ class MathUtilsTest {
 	
 	}
 	
+//	@Test
 	@RepeatedTest(3)
-	void testDivide(RepetitionInfo repitionInfo) {
+	void testDivide() {
 
 		assertThrows(ArithmeticException.class , () -> {
 			mu.divide(10,0);	
