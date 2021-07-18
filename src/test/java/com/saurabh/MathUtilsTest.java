@@ -12,6 +12,9 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.util.Random;
+import java.util.function.*;
+
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class MathUtilsTest {
 
@@ -38,15 +41,38 @@ class MathUtilsTest {
 				);
 	}
 	
+	@DisplayName("Main() ...")
+	 static int getTwoDigitRandom() {
+		Random r = new Random();
+		return r.nextInt(32);
+		
+	}
 
+	@Test
+	@DisplayName("Main() ...")
+	void testComputeMain() {
+//		BiConsumer<String, String> first = (t, u) -> System.out.println(t.toUpperCase() + u.toUpperCase());
+//		BiConsumer<String, String> second = (t, u) -> System.out.println(t.toLowerCase() + u.toLowerCase());
+//		first.andThen(second).accept("this is t", "this is u");
+
+		 
+        Supplier<Integer> supplier1 = MathUtilsTest::getTwoDigitRandom;
+
+		IntSupplier supplier2 =  () -> 1; // lambda expression
+		IntSupplier supplier3 =  MathUtilsTest::getTwoDigitRandom; // method reference
+		System.out.println("supper 2: " + supplier3.getAsInt());
+    
+        System.out.println("supper 1: " + supplier1.get());
+	}
 	@Nested
 	@DisplayName("Add Method")
 	class AddTest {
 		
+		Supplier<String> messageSupplier = () -> "saurabh";
 		@Test
 		void testComputeCircleArea() {
 			double actual = mu.computeCircleArea(10);
-			assertEquals(31, actual, "should return the area of circle radius with 10" );
+			assertEquals(314, actual, messageSupplier );
 		}
 		
 		@Test
