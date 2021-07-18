@@ -47,23 +47,7 @@ class MathUtilsTest {
 		return r.nextInt(32);
 		
 	}
-
-	@Test
-	@DisplayName("Main() ...")
-	void testComputeMain() {
-//		BiConsumer<String, String> first = (t, u) -> System.out.println(t.toUpperCase() + u.toUpperCase());
-//		BiConsumer<String, String> second = (t, u) -> System.out.println(t.toLowerCase() + u.toLowerCase());
-//		first.andThen(second).accept("this is t", "this is u");
-
-		 
-        Supplier<Integer> supplier1 = MathUtilsTest::getTwoDigitRandom;
-
-		IntSupplier supplier2 =  () -> 1; // lambda expression
-		IntSupplier supplier3 =  MathUtilsTest::getTwoDigitRandom; // method reference
-		System.out.println("supper 2: " + supplier3.getAsInt());
-    
-        System.out.println("supper 1: " + supplier1.get());
-	}
+	
 	@Nested
 	@DisplayName("Add Method")
 	class AddTest {
