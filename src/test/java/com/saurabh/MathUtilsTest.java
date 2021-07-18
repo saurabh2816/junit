@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -41,13 +43,6 @@ class MathUtilsTest {
 				);
 	}
 	
-	@DisplayName("Main() ...")
-	 static int getTwoDigitRandom() {
-		Random r = new Random();
-		return r.nextInt(32);
-		
-	}
-	
 	@Nested
 	@DisplayName("Add Method")
 	class AddTest {
@@ -58,14 +53,17 @@ class MathUtilsTest {
 			double actual = mu.computeCircleArea(10);
 			assertEquals(314, actual, messageSupplier );
 		}
+	
+	
+	}
+	
+	@RepeatedTest(3)
+	void testDivide(RepetitionInfo repitionInfo) {
+
+		assertThrows(ArithmeticException.class , () -> {
+			mu.divide(10,0);	
+		}, "asset throws !!");
 		
-		@Test
-		void testDivide() {
-			assertThrows(ArithmeticException.class , () -> {
-				mu.divide(10,0);	
-			}, "asset throws !!");
-			
-		}
 	}
 
 }
